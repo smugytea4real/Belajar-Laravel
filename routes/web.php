@@ -9,6 +9,7 @@ Route::get('/', function () {
 Route::get('/home', function () {
     return view('home', [
         'name' => 'Donny',
-        'status' => 'admin'
+        'status' => 'admin',
+        'buah' => ['semangka', 'apel', 'jeruk']
     ]);
 });

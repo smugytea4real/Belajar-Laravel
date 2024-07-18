@@ -35,27 +35,18 @@
         <h4>Hi nama saya {{ $name }}</h4>
         <h4>Saya seorang {{ $status }}</h3>
         
-        {{-- if directive dan switch directive --}}
-        {{-- @if ($status == 'admin')
-            <a href="">Ke halaman admin</a>
-        @elseif ($status == 'staff')
-            <a href="">Ke halaman gudang</a>
-        @else
-            <a href="">Ke halaman guest</a>
-        @endif --}}
-
-        @switch($status)
-            @case('admin')
-                <a href="">Ke halaman admin</a>
-                @break
-
-            @case('staff')
-                <a href="">Ke halaman gudang</a>
-                @break
-
-            @default
-                <a href="">Ke halaman guest</a>
-        @endswitch
+        <table class="table">
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+            </tr>
+            @foreach ($buah as $item)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $item }}</td>
+                </tr>
+            @endforeach
+        </table>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
