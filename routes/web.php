@@ -13,3 +13,7 @@ Route::get('/home', function () {
         'buah' => ['semangka', 'apel', 'jeruk']
     ]);
 });
+
+Route::get('/about', function () {
+    return view('about');
+});
