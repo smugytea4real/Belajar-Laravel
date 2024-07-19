@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ClassController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,7 +17,5 @@ Route::get('/home', function () {
 });
 
 Route::get('/student', ([StudentController::class, 'index']));
+Route::get('/class', ([ClassController::class, 'index']));
 
-Route::get('/class' , function () {
-    return view('class');
-});
