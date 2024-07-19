@@ -14,26 +14,28 @@ class StudentSeeder extends Seeder
      */
     public function run(): void
     {
-        Schema::disableForeignKeyConstraints();
-        Student::truncate();
-        Schema::enableForeignKeyConstraints();
+        // Schema::disableForeignKeyConstraints();
+        // Student::truncate();
+        // Schema::enableForeignKeyConstraints();
 
-        $data = [
-            ['name' => 'Donny', 'gender' => 'L', 'NIS' => '123456', 'class_id' => 1],
-            ['name' => 'Denny', 'gender' => 'L', 'NIS' => '123455', 'class_id' => 2],
-            ['name' => 'Sani', 'gender' => 'P', 'NIS' => '123454', 'class_id' => 3],
-            ['name' => 'Dannang', 'gender' => 'L', 'NIS' => '123453', 'class_id' => 4],
-        ];
+        // $data = [
+        //     ['name' => 'Donny', 'gender' => 'L', 'NIS' => '123456', 'class_id' => 1],
+        //     ['name' => 'Denny', 'gender' => 'L', 'NIS' => '123455', 'class_id' => 2],
+        //     ['name' => 'Sani', 'gender' => 'P', 'NIS' => '123454', 'class_id' => 3],
+        //     ['name' => 'Dannang', 'gender' => 'L', 'NIS' => '123453', 'class_id' => 4],
+        // ];
 
-        foreach ($data as $value) {
-            Student::insert([
-                'name' => $value['name'],
-                'gender' => $value['gender'],
-                'NIS' => $value['NIS'],
-                'class_id' => $value['class_id'],
-                'created_at' => now(),
-                'updated_at' => now(),
-            ]);
-        }
+        // foreach ($data as $value) {
+        //     Student::insert([
+        //         'name' => $value['name'],
+        //         'gender' => $value['gender'],
+        //         'NIS' => $value['NIS'],
+        //         'class_id' => $value['class_id'],
+        //         'created_at' => now(),
+        //         'updated_at' => now(),
+        //     ]);
+        // }
+
+        Student::factory()->count(25)->create();
     }
 }
