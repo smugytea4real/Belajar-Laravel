@@ -17,6 +17,7 @@
                     <th>Class id</th>
                     <th>Class</th>
                     <th>Extracurricular</th>
+                    <th>HomeroomTeacher</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +33,9 @@
                         @foreach($data->extracurriculars as $data_extracurricular)
                             - {{ $data_extracurricular->name }} <br>
                         @endforeach
+                        </td>
+                        <td>
+                           {{ $data->class->homeroomTeacher->name }}
                         </td>
                     </tr>
                 @endforeach

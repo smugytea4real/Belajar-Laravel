@@ -12,19 +12,23 @@
             <tr>
                 <th>No</th>
                 <th>Name</th>
+                <th>Student</th>
+                <th>Teacher</th>
             </tr>
-            @foreach($classlist as $data_class)
+            @foreach($classlist as $data)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $data_class->name }}</td>
+                    <td>{{ $data->name }}</td>
                     <td>
-                        @foreach($data_class->students as $data_student)
+                        @foreach($data->students as $data_student)
                             -{{ $data_student->name }} <br>
                         @endforeach
+                    </td>
+                    <td>
+                        {{ $data->homeroomTeacher->name }}
                     </td>
                 </tr>
             @endforeach
         </table>
-
     </div>
 @endsection

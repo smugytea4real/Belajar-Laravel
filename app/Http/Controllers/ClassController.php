@@ -9,7 +9,7 @@ class ClassController extends Controller
 {
     public function index()
     {
-        $class = ClassRoom::with('students')->get();
+        $class = ClassRoom::with('students', 'homeroomTeacher')->get();
         return view('class', ['classlist' => $class]);
     }
 }

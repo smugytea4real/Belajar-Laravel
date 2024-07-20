@@ -16,7 +16,7 @@ class StudentController extends Controller
         // lebih banyak request ke database
 
         // eager loading => lebih cepat => hanya melakukan 2 kali request ke database
-        $student = Student::with(['class', 'extracurriculars'])->get();
+        $student = Student::with(['class.homeroomTeacher', 'extracurriculars'])->get();
         return view('student', ['studentlist' => $student]);
         
     }
