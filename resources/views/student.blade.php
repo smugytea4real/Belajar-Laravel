@@ -16,17 +16,23 @@
                     <th>NIS</th>
                     <th>Class id</th>
                     <th>Class</th>
+                    <th>Extracurricular</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($studentlist as $data_student) 
+                @foreach($studentlist as $data) 
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $data_student->name }}</td>
-                        <td>{{ $data_student->gender }}</td>
-                        <td>{{ $data_student->NIS }}</td>
-                        <td>{{ $data_student->class_id }}</td>
-                        <td>{{ $data_student->class->name }}</td>
+                        <td>{{ $data->name }}</td>
+                        <td>{{ $data->gender }}</td>
+                        <td>{{ $data->NIS }}</td>
+                        <td>{{ $data->class_id }}</td>
+                        <td>{{ $data->class->name }}</td>
+                        <td>
+                        @foreach($data->extracurriculars as $data_extracurricular)
+                            - {{ $data_extracurricular->name }} <br>
+                        @endforeach
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

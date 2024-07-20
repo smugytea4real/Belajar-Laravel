@@ -13,9 +13,11 @@ class StudentController extends Controller
     {
         // lazy loading
         // $student = Student::all();
+        // lebih banyak request ke database
 
-        // eager loading
-        $student = Student::with('class')->get();
+        // eager loading => lebih cepat => hanya melakukan 2 kali request ke database
+        $student = Student::with(['class', 'extracurriculars'])->get();
         return view('student', ['studentlist' => $student]);
+        
     }
 }
