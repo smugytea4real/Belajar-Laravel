@@ -4,9 +4,15 @@
 
 @section('content')
 
-    <div class="container">
-        <h1>Ini Halaman Extracurricular</h1>
-        <h4>Extracurricular list</h4>
+    <h1>Ini Halaman Extracurricular</h1>
+
+    <div class="my-5">
+        <a href="extracurricular-add" class="btn btn-primary">
+            Add Data
+        </a>
+    </div>
+
+    <h4>Extracurricular list</h4>
         <table class="table">
             <thead>
                 <tr>
@@ -25,7 +31,6 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
 
 @endsection
 

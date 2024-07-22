@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\ClassRoom;
+use App\Models\Extracurricular;
 use Illuminate\Http\Request;
 use App\Models\Student;
 use Illuminate\Support\Facades\DB;
@@ -26,5 +28,19 @@ class StudentController extends Controller
         $student = Student::with([ 'class.homeroomTeacher', 'extracurriculars' ])
         ->findOrFail($id);
         return view('student-detail', ['student' => $student]);
+    }
+
+    public function create()
+    {    
+        $class = ClassRoom::select('id', 'name')->get();
+        $extracurriculars = Extracurricular::select('id', 'name')->get();
+        return view('student-add', ['class' => $class, 'extracurriculars' => $extracurriculars]);
+    }
+
+    public function store(Request $request)
+    {
+        $student = Student::create($request->all());
+        $student->extracurriculars()->sync($request->input('extracurriculars', []));
+        return redirect('/student');
     }
 }

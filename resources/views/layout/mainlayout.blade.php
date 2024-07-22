@@ -23,7 +23,7 @@
                     <a class="nav-link" href="/student">Student</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/class">Class</a>
+                    <a class="nav-link" href="/classroom">ClassRoom</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/extracurricular">Extracurricular</a>

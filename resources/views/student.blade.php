@@ -4,9 +4,15 @@
 
 @section('content')
 
-    <div class="container">
-        <h1>Ini Halaman Student</h1>
-        <h4>Student list</h4>
+    <h1>Ini Halaman Student</h1>
+
+    <div class="my-5">
+        <a href="student-add" class="btn btn-primary">
+            Add Data
+        </a>
+    </div>
+
+    <h4>Student list</h4>
 
         <table class="table">
             <thead>
@@ -25,13 +31,13 @@
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->gender }}</td>
                         <td>{{ $data->NIS }}</td>
-                        <td><a href="/student/{{ $data->id }}">Detail</a></td>
+                        <td><a href="/student-detail/{{ $data->id }}">Detail</a></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
-    
+
 @endsection
 
     

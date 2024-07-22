@@ -19,15 +19,23 @@ Route::get('/home', function () {
 });
 
 Route::get('/student', ([StudentController::class, 'index']));
-Route::get('/student/{id}', ([StudentController::class, 'show']));
+Route::get('/student-detail/{id}', ([StudentController::class, 'show']));
+Route::get('/student-add', ([StudentController::class, 'create']));
+Route::post('/student', ([StudentController::class, 'store']));
 
-Route::get('/class', ([ClassController::class, 'index']));
-Route::get('/class-detail/{id}', ([ClassController::class, 'show']));
+Route::get('/classroom', ([ClassController::class, 'index']));
+Route::get('/classroom-detail/{id}', ([ClassController::class, 'show']));
+Route::get('/classroom-add', ([ClassController::class, 'create']));
+Route::post('/classroom', ([ClassController::class, 'store']));
 
 Route::get('/extracurricular', ([ExtracurricularController::class, 'index']));
 Route::get('/extracurricular-detail/{id}', ([ExtracurricularController::class, 'show']));
+Route::get('/extracurricular-add', ([ExtracurricularController::class, 'create']));
+Route::post('/extracurricular', ([ExtracurricularController::class, 'store']));
 
 Route::get('/teacher', ([TeacherController::class, 'index']));
 Route::get('/teacher-detail/{id}', ([TeacherController::class, 'show']));
+Route::get('/teacher-add', ([TeacherController::class, 'create']));
+Route::post('/teacher', ([TeacherController::class, 'store']));
 
 

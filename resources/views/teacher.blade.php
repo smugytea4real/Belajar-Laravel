@@ -4,9 +4,15 @@
 
 @section('content')
 
-    <div class="container">
-        <h1>Ini Halaman Teacher</h1>
-        <h4>Teacher list</h4>
+    <h1>Ini Halaman Teacher</h1>
+
+    <div class="my-5">
+        <a href="/teacher-add" class="btn btn-primary">
+            Add Data
+        </a>
+    </div>
+
+    <h4>Teacher list</h4>
 
         <table class="table">
             <thead>
@@ -26,7 +32,6 @@
                 @endforeach
             </tbody>
         </table>
-    </div>
 
 @endsection
 

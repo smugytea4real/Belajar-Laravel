@@ -1,12 +1,18 @@
 @extends('layout.mainlayout')
 
-@section('title', 'Class')
+@section('title', 'Classroom')
 
 @section('content')
 
-    <div class="container">
-        <h1>Ini Halaman Class</h1>
-        <h3>Class list</h3>
+    <h1>Ini Halaman Classroom</h1>
+
+    <div class="my-5">
+        <a href="classroom-add" class="btn btn-primary">
+            Add Data
+        </a>
+    </div>
+
+    <h3>Class list</h3>
 
 
         <table class="table">
@@ -19,10 +25,9 @@
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->name }}</td>
-                    <td><a href="class-detail/{{ $data->id }}">Detail</a></td>
+                    <td><a href="classroom-detail/{{ $data->id }}">Detail</a></td>
                 </tr>
             @endforeach
         </table>
-    </div>
-    
+
 @endsection

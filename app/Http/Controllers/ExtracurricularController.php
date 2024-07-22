@@ -18,4 +18,16 @@ class ExtracurricularController extends Controller
         $eksul = Extracurricular::findOrFail($id);
         return view('extracurricular-detail', ['eksul' => $eksul]);
     }
+
+    public function create()
+    {    
+        $eksul = Extracurricular::get();
+        return view('extracurricular-add');
+    }
+
+    public function store(Request $request)
+    {
+            $eksul = Extracurricular::create($request->all());
+            return redirect('/extracurricular');
+    }
 }

@@ -9,6 +9,13 @@ class Student extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'gender', 
+        'NIS', 
+        'class_id'
+    ];
+
     public function class()
     {
         return $this->belongsTo(ClassRoom::class);
@@ -18,9 +25,4 @@ class Student extends Model
     {
         return $this->belongsToMany(Extracurricular::class, 'student_extracurricular', 'student_id', 'extracurricular_id');
     }
-    protected $fillable = [
-        'name',
-        'gender', 
-        'NIS', 
-        'class_id'];
 }
