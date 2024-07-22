@@ -8,8 +8,16 @@ use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
-    public function index(){
-    $teacher = Teacher::all();
-    return view('teacher', ['teacherlist' => $teacher]);
+    public function index()
+    {
+        $teacher = Teacher::all();
+        return view('teacher', ['teacherlist' => $teacher]);
+    }
+
+    public function show($id)
+    {
+        $teacher = Teacher::with(['class.students'])
+        ->findOrFail($id);
+        return view('teacher-detail', ['teacher' => $teacher]);
     }
 }

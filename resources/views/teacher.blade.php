@@ -3,6 +3,7 @@
 @section('title', 'Teacher')
 
 @section('content')
+
     <div class="container">
         <h1>Ini Halaman Teacher</h1>
         <h4>Teacher list</h4>
@@ -12,6 +13,7 @@
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,11 +21,14 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->name }}</td>
+                        <td><a href="teacher-detail/{{ $data->id }}">Detail</a></td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
     </div>
+
 @endsection
+
 
     
