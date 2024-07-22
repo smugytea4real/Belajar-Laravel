@@ -12,6 +12,12 @@
         </a>
     </div>
 
+    @if (Session::has('status'))
+        <div class="alert alert-success">
+            {{ Session::get('message') }}
+        </div>
+    @endif
+
     <h4>Student list</h4>
 
         <table class="table">

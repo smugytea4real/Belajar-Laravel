@@ -15,7 +15,7 @@
 
             <div class="mb-3">
                 <label for="teacher">Teacher</label>
-                <select name="teacher" id="teacher" class="form-control" required>
+                <select name="teacher_id" id="teacher" class="form-control" required>
                     <option value="{{ $class->teacher_id }}">{{ $class->homeroomTeacher->name }}</option>
                     @foreach ($teacher as $item)
                         <option value="{{ $item->id }}">{{ $item->name }}</option>

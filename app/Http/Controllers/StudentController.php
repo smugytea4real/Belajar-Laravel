@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 
-use App\Models\ClassRoom;
-use App\Models\Extracurricular;
-use Illuminate\Http\Request;
 use App\Models\Student;
+use App\Models\ClassRoom;
+use Illuminate\Http\Request;
+use App\Models\Extracurricular;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class StudentController extends Controller
 {
@@ -41,6 +42,12 @@ class StudentController extends Controller
     {
         $student = Student::create($request->all());
         $student->extracurriculars()->sync($request->input('extracurriculars', []));
+
+        if($student){
+            Session::flash('status', 'success');
+            Session::flash('message', 'Student added successfully');
+        }
+
         return redirect('/student');
     }
 
@@ -63,6 +70,12 @@ class StudentController extends Controller
         $student = Student::findOrFail($request->id);
         $student->update($request->all());
         $student->extracurriculars()->sync($request->input('extracurriculars', []));
+
+        if($student->save()){
+            Session::flash('status', 'success');
+            Session::flash('message', 'Student updated successfully');
+        }
+
         return redirect('/student');
     }
 }

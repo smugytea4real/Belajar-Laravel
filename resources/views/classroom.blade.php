@@ -12,9 +12,13 @@
         </a>
     </div>
 
+    @if (Session::has('status'))
+        <div class="alert alert-success">
+            {{ Session::get('message') }}
+        </div>
+    @endif
+
     <h3>Class list</h3>
-
-
         <table class="table">
             <tr>
                 <th>No</th>
