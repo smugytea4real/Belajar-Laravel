@@ -22,20 +22,28 @@ Route::get('/student', ([StudentController::class, 'index']));
 Route::get('/student-detail/{id}', ([StudentController::class, 'show']));
 Route::get('/student-add', ([StudentController::class, 'create']));
 Route::post('/student', ([StudentController::class, 'store']));
+Route::get('/student-edit/{id}', ([StudentController::class, 'edit']));
+Route::put('/student/{id}', ([StudentController::class, 'update']));
 
 Route::get('/classroom', ([ClassController::class, 'index']));
 Route::get('/classroom-detail/{id}', ([ClassController::class, 'show']));
 Route::get('/classroom-add', ([ClassController::class, 'create']));
 Route::post('/classroom', ([ClassController::class, 'store']));
+Route::get('/classroom-edit/{id}', ([ClassController::class, 'edit']));
+Route::put('/classroom/{id}', ([ClassController::class, 'update']));
 
 Route::get('/extracurricular', ([ExtracurricularController::class, 'index']));
 Route::get('/extracurricular-detail/{id}', ([ExtracurricularController::class, 'show']));
 Route::get('/extracurricular-add', ([ExtracurricularController::class, 'create']));
 Route::post('/extracurricular', ([ExtracurricularController::class, 'store']));
+Route::get('/extracurricular-edit/{id}', ([ExtracurricularController::class, 'edit']));
+Route::put('/extracurricular/{id}', ([ExtracurricularController::class, 'update']));
 
 Route::get('/teacher', ([TeacherController::class, 'index']));
 Route::get('/teacher-detail/{id}', ([TeacherController::class, 'show']));
 Route::get('/teacher-add', ([TeacherController::class, 'create']));
 Route::post('/teacher', ([TeacherController::class, 'store']));
+Route::get('/teacher-edit/{id}', ([TeacherController::class, 'edit']));
+Route::put('/teacher/{id}', ([TeacherController::class, 'update']));
 
 

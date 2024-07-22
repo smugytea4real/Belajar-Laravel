@@ -21,7 +21,7 @@
                     <th>Nama</th>
                     <th>Jenis Kelamin</th>
                     <th>NIS</th>
-                    <th>action</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -31,7 +31,10 @@
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->gender }}</td>
                         <td>{{ $data->NIS }}</td>
-                        <td><a href="/student-detail/{{ $data->id }}">Detail</a></td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="/student-detail/{{ $data->id }}">Detail</a>
+                            <a class="btn btn-primary" href="/student-edit/{{ $data->id }}">Edit</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>

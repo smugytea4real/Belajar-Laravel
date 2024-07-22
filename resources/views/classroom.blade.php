@@ -19,13 +19,16 @@
             <tr>
                 <th>No</th>
                 <th>Name</th>
-                <th>Action</th>
+                <th class="text-center">Action</th>
             </tr>
             @foreach($classlist as $data)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $data->name }}</td>
-                    <td><a href="classroom-detail/{{ $data->id }}">Detail</a></td>
+                    <td class="text-center">
+                        <a class="btn btn-primary" href="classroom-detail/{{ $data->id }}">Detail</a>
+                        <a class="btn btn-primary" href="classroom-edit/{{ $data->id }}">Edit</a>
+                    </td>
                 </tr>
             @endforeach
         </table>

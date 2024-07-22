@@ -19,7 +19,7 @@
                 <tr>
                     <th>No</th>
                     <th>Nama</th>
-                    <th>Action</th>
+                    <th class="text-center">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -27,7 +27,10 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->name }}</td>
-                        <td><a href="teacher-detail/{{ $data->id }}">Detail</a></td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="teacher-detail/{{ $data->id }}">Detail</a>
+                            <a class="btn btn-primary" href="teacher-edit/{{ $data->id }}">Edit</a>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
