@@ -21,7 +21,7 @@ class StudentController extends Controller
         // lebih banyak request ke database
 
         // eager loading => lebih cepat => hanya melakukan 2 kali request ke database
-        $student = Student::get();
+        $student = Student::paginate(20);
         return view('student', ['studentlist' => $student]);
         
     }

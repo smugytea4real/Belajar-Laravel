@@ -36,6 +36,6 @@ class StudentSeeder extends Seeder
         //     ]);
         // }
 
-        Student::factory()->count(25)->create();
+        Student::factory()->count(200)->create();
     }
 }

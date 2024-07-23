@@ -23,7 +23,7 @@ class StudentFactory extends Factory
             'name' => $faker->name(),
             'gender' => Arr::random(['L', 'P']),
             'NIS' => mt_rand(0000001, 9999999),
-            'class_id' => Arr::random([1, 2, 3, 4]),
+            'class_id' => Arr::random([1, 2, 3, 4, 5, 6]),
         ];
     }
 }
