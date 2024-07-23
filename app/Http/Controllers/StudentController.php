@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 
+use App\Http\Requests\StudentCreateRequest;
+use App\Http\Requests\StudentEditRequest;
 use App\Models\Student;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
@@ -38,8 +40,8 @@ class StudentController extends Controller
         return view('student-add', ['class' => $class, 'extracurriculars' => $extracurriculars]);
     }
 
-    public function store(Request $request)
-    {
+    public function store(StudentCreateRequest $request)
+    {   
         $student = Student::create($request->all());
         $student->extracurriculars()->sync($request->input('extracurriculars', []));
 
@@ -48,10 +50,10 @@ class StudentController extends Controller
             Session::flash('message', 'Student added successfully');
         }
 
-        return redirect('/student');
+        return redirect('student');
     }
 
-    public function edit(Request $request, $id)
+    public function edit(Req $request, $id)
     {
         $student = Student::findOrFail($request->id);
         $class = ClassRoom::where('id', '!=', $student->class_id)->select('id', 'name')->get();
@@ -76,6 +78,6 @@ class StudentController extends Controller
             Session::flash('message', 'Student updated successfully');
         }
 
-        return redirect('/student');
+        return redirect('student');
     }
 }

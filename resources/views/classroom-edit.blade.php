@@ -5,6 +5,17 @@
 @section('content')
 
    <div class="mt-5 col-6 m-auto">
+    <div class="mt-5 col-6 m-auto">
+            @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+            @endif
+
         <form action="/classroom/{{ $class->id }}" method="POST">
             @csrf
             @method('PUT')

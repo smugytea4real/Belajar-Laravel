@@ -6,6 +6,8 @@ use App\Models\Teacher;
 use App\Models\ClassRoom;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\ClassroomEditRequest;
+use App\Http\Requests\ClassroomCreateRequest;
 
 class ClassController extends Controller
 {
@@ -28,7 +30,7 @@ class ClassController extends Controller
         return view('classroom-add', ['teacher' => $teacher]);
     }
 
-    public function store(Request $request)
+    public function store(ClassroomCreateRequest $request)
     {
         $classroom = ClassRoom::create($request->all());
 
