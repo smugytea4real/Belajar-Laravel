@@ -40,6 +40,7 @@
                         <td class="text-center">
                             <a class="btn btn-primary" href="/student-detail/{{ $data->id }}">Detail</a>
                             <a class="btn btn-primary" href="/student-edit/{{ $data->id }}">Edit</a>
+                            <a class="btn btn-primary" href="/student-delete/{{ $data->id }}">Delete</a>
                         </td>
                     </tr>
                 @endforeach

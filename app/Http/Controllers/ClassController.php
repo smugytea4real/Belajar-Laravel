@@ -49,7 +49,7 @@ class ClassController extends Controller
         return view('/classroom-edit', ['class' => $class, 'teacher' => $teacher]);
     }
 
-    public function update(Request $request, $id)
+    public function update(ClassroomEditRequest $request, $id)
     {
         $class = ClassRoom::findOrFail($request->id);
         $class->update($request->all());
@@ -61,4 +61,5 @@ class ClassController extends Controller
 
         return redirect('/classroom');
     }
+
 }

@@ -53,7 +53,7 @@ class StudentController extends Controller
         return redirect('student');
     }
 
-    public function edit(Req $request, $id)
+    public function edit(Request $request, $id)
     {
         $student = Student::findOrFail($request->id);
         $class = ClassRoom::where('id', '!=', $student->class_id)->select('id', 'name')->get();
@@ -67,7 +67,7 @@ class StudentController extends Controller
         ]);
     }
 
-    public function update(Request $request, $id)
+    public function update(StudentEditRequest $request, $id)
     {
         $student = Student::findOrFail($request->id);
         $student->update($request->all());
@@ -79,5 +79,25 @@ class StudentController extends Controller
         }
 
         return redirect('student');
+    }
+
+    public function delete($id)
+    {
+        $student = Student::findOrFail($id);
+        // $student->delete();
+        // Session::flash('status', 'success');
+        // Session::flash('message', 'Student deleted successfully');
+        return view('student-delete', ['student' => $student]);
+    }
+
+    public function destroy($id)
+    {
+        $deleteStudent = Student::findOrFail($id);
+        $deleteStudent->extracurriculars()->detach();
+        $deleteStudent->delete();
+        Session::flash('status', 'success');
+        Session::flash('message', 'Student deleted successfully');
+
+        return redirect('/student');
     }
 }
