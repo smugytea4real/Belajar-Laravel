@@ -18,14 +18,25 @@
     @endif
 
     <h4>Student list</h4>
-        <div class="mt-5">
-            <table class="table">
+
+    <div class="my-3 col-12 col-sm-8 col-md-5">
+        <form action="" method="GET">
+            <div class="input-group">
+                <input type="text" class="form-control" name="keyword" placeholder="Keyword">
+                <button class="input-group-text btn btn-primary">Search</button>
+            </div>
+        </form>
+    </div>
+        
+    <div class="mt-5">
+        <table class="table">
                 <thead>
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
                         <th>Jenis Kelamin</th>
                         <th>NIS</th>
+                        <th>Class</th>
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -36,6 +47,7 @@
                             <td>{{ $data->name }}</td>
                             <td>{{ $data->gender }}</td>
                             <td>{{ $data->NIS }}</td>
+                            <td>{{ $data->class->name }}</td>
                             <td class="text-center">
                                 <a class="btn btn-primary" href="/student-detail/{{ $data->id }}">Detail</a>
                                 <a class="btn btn-primary" href="/student-edit/{{ $data->id }}">Edit</a>
@@ -45,10 +57,10 @@
                     @endforeach
                 </tbody>
             </table>
-        </div>
+        </div>    
 
     <div class="my-5">
-    {{ $studentlist->links() }}
+    {{ $studentlist->withQueryString()->links() }}
     </div>
 @endsection
 

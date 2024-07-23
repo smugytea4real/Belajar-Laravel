@@ -14,16 +14,23 @@ use Illuminate\Support\Facades\Session;
 
 class StudentController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         // lazy loading
         // $student = Student::all();
         // lebih banyak request ke database
 
         // eager loading => lebih cepat => hanya melakukan 2 kali request ke database
-        $student = Student::paginate(20);
+        $keyword = $request->keyword;
+        $student = Student::with('class')
+                            ->where('name', 'LIKE', "%$keyword%")
+                            ->orWhere('gender', $keyword)
+                            ->orWhere('NIS', 'LIKE', "%$keyword%")
+                            ->orWhereHas('class', function($query) use($keyword) {
+                                $query->where('name', 'LIKE', "%$keyword%");
+                            })
+                            ->paginate(20);
         return view('student', ['studentlist' => $student]);
-        
     }
 
     public function show($id)
