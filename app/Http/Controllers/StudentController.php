@@ -93,11 +93,25 @@ class StudentController extends Controller
     public function destroy($id)
     {
         $deleteStudent = Student::findOrFail($id);
-        $deleteStudent->extracurriculars()->detach();
         $deleteStudent->delete();
         Session::flash('status', 'success');
         Session::flash('message', 'Student deleted successfully');
 
+        return redirect('/student');
+    }
+
+    public function deletedStudent()
+    {
+        $deletedStudent = Student::onlyTrashed()->get();
+        return view('student-deleted-list', ['student' => $deletedStudent]);
+    }
+
+    public function restore($id)
+    {
+        $restoreStudent = Student::withTrashed()->findOrFail($id);
+        $restoreStudent->restore();
+        Session::flash('status', 'success');
+        Session::flash('message', 'Student restored successfully');
         return redirect('/student');
     }
 }

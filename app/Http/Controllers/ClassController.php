@@ -61,5 +61,4 @@ class ClassController extends Controller
 
         return redirect('/classroom');
     }
-
 }
