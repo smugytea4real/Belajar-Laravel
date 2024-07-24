@@ -27,6 +27,7 @@
                 <label for="class">Teacher</label>
                 <select name="teacher_id" id="teacher" class="form-control" required>
                     <option value="">-- Select --</option>
+                    <option value="{{ null }}">Empty</option>
                     @foreach ($teacher as $item)
                         <option value="{{ $item->id }}">{{ $item->name }}</option>
                     @endforeach

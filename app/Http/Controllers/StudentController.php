@@ -100,9 +100,6 @@ class StudentController extends Controller
     public function delete($id)
     {
         $student = Student::findOrFail($id);
-        // $student->delete();
-        // Session::flash('status', 'success');
-        // Session::flash('message', 'Student deleted successfully');
         return view('student-delete', ['student' => $student]);
     }
 

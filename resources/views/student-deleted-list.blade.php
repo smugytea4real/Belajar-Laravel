@@ -1,6 +1,6 @@
 @extends('layout.mainlayout')
 
-@section('title', 'Student')
+@section('title', 'Student Deleted List')
 
 @section('content')
     

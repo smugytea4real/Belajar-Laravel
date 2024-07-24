@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ClassRoom;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClassController;
@@ -19,22 +20,26 @@ Route::post('/login', ([AuthController::class, 'authenticating']))->middleware('
 Route::get('/logout', ([AuthController::class, 'logout']))->middleware('auth');
 
 Route::get('/student', ([StudentController::class, 'index']))->middleware('auth');
-Route::get('/student-detail/{id}', ([StudentController::class, 'show']))->middleware(['auth', 'must-admin-or-teacher']);
+Route::get('/student-detail/{id}', ([StudentController::class, 'show']))->middleware('auth');
 Route::get('/student-add', ([StudentController::class, 'create']))->middleware(['auth', 'must-admin-or-teacher']);
 Route::post('/student', ([StudentController::class, 'store']))->middleware(['auth', 'must-admin-or-teacher']);
 Route::get('/student-edit/{id}', ([StudentController::class, 'edit']))->middleware(['auth', 'must-admin-or-teacher']);
 Route::put('/student/{id}', ([StudentController::class, 'update']))->middleware(['auth', 'must-admin-or-teacher']);
 Route::get('/student-delete/{id}', ([StudentController::class, 'delete']))->middleware(['auth', 'must-admin']);
 Route::delete('/student-destroy/{id}', ([StudentController::class, 'destroy']))->middleware(['auth', 'must-admin']);
-Route::get('/student-deleted', ([StudentController::class, 'deletedStudent']))->middleware(['auth', 'must-admin']);
+Route::get('/student-deleted-list', ([StudentController::class, 'deletedStudent']))->middleware(['auth', 'must-admin']);
 Route::get('/student/{id}/restore', ([StudentController::class, 'restore']))->middleware(['auth', 'must-admin']);
 
 Route::get('/classroom', ([ClassController::class, 'index']))->middleware('auth');
 Route::get('/classroom-detail/{id}', ([ClassController::class, 'show']))->middleware('auth');
-Route::get('/classroom-add', ([ClassController::class, 'create']))->middleware('auth');
-Route::post('/classroom', ([ClassController::class, 'store']))->middleware('auth');
-Route::get('/classroom-edit/{id}', ([ClassController::class, 'edit']))->middleware('auth');
-Route::put('/classroom/{id}', ([ClassController::class, 'update']))->middleware('auth');
+Route::get('/classroom-add', ([ClassController::class, 'create']))->middleware(['auth', 'must-admin']);
+Route::post('/classroom', ([ClassController::class, 'store']))->middleware(['auth', 'must-admin']);
+Route::get('/classroom-edit/{id}', ([ClassController::class, 'edit']))->middleware(['auth', 'must-admin']);
+Route::put('/classroom/{id}', ([ClassController::class, 'update']))->middleware(['auth', 'must-admin']);
+Route::get('/classroom-delete/{id}', ([ClassController::class, 'delete']))->middleware(['auth', 'must-admin']);
+Route::delete('/classroom-destroy/{id}', ([ClassController::class, 'destroy']))->middleware(['auth', 'must-admin']);
+Route::get('/classroom-deleted-list', ([ClassController::class, 'deletedClass']))->middleware(['auth', 'must-admin']);
+Route::get('/classroom/{id}/restore', ([ClassController::class, 'restore']))->middleware(['auth', 'must-admin']);
 
 Route::get('/extracurricular', ([ExtracurricularController::class, 'index']))->middleware('auth');
 Route::get('/extracurricular-detail/{id}', ([ExtracurricularController::class, 'show']))->middleware('auth');

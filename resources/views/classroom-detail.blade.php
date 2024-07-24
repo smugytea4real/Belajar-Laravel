@@ -6,7 +6,13 @@
     <h2>Anda sedang melihat data detail dari class {{ $class->name }}</h2>
 
     <div class="mt-5">
-        <h3><strong>Homeroom Teacher : </strong>{{ $class->homeroomTeacher->name }}</h3>
+        <h3><strong>Homeroom Teacher : </strong>
+        @if($class->homeroomTeacher && $class->homeroomTeacher->name)
+        {{ $class->homeroomTeacher->name }}
+        @else
+        empty
+        @endif
+        </h3>
     </div>
 
     <div class="mt-5">

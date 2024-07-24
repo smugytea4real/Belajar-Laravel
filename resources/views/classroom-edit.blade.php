@@ -25,14 +25,14 @@
             </div>
 
             <div class="mb-3">
-                <label for="teacher">Teacher</label>
-                <select name="teacher_id" id="teacher" class="form-control" required>
-                    <option value="{{ $class->teacher_id }}">{{ $class->homeroomTeacher->name }}</option>
-                    @foreach ($teacher as $item)
-                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                    @endforeach
-                </select>
-            </div>
+                    <label for="teacher">Teacher</label>
+                    <select name="teacher_id" id="teacher" class="form-control">
+                        <option value="">Empty</option>
+                        @foreach ($teacher as $item)
+                            <option value="{{ $item->id }}">{{ $item->name }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
             <div>
                 <button type="submit" class="btn btn-primary">Update</button>

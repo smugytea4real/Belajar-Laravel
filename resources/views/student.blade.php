@@ -4,11 +4,21 @@
 
 @section('content')
 
-    <h1>Ini Halaman Student</h1>
+    <div class="mt-5 d-flex">
+        <h1>Ini Halaman Student</h1>
+    </div>
 
     <div class="my-5 d-flex justify-content-between">
-        <a href="student-add" class="btn btn-primary">Add Data</a>
-        <a href="student-deleted" class="btn btn-info">Show Deleted Data</a>
+        @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 2)
+                            
+        @else 
+            <a href="student-add" class="btn btn-primary">Add Data</a>   
+        @endif
+
+        @if (Auth::user()->role_id == 1)
+            <a href="student-deleted-list" class="btn btn-info">Show Deleted Data</a>   
+        @endif
+        
     </div>
 
     @if (Session::has('status'))
@@ -35,8 +45,12 @@
                         <th>No</th>
                         <th>Nama</th>
                         <th>Jenis Kelamin</th>
-                        <th>NIS</th>
                         <th>Class</th>
+                        @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 2)
+                            
+                        @else 
+                            <th>NIS</th>
+                        @endif
                         <th class="text-center">Action</th>
                     </tr>
                 </thead>
@@ -46,18 +60,25 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $data->name }}</td>
                             <td>{{ $data->gender }}</td>
-                            <td>{{ $data->NIS }}</td>
                             <td>{{ $data->class->name }}</td>
+                            @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 2)
+                            
+                            @else 
+                            <td>{{ $data->NIS }}</td>
+                            @endif
                             <td class="text-center">
+                                @if (Auth::user()->role_id == 3)
+                                    <a class="btn btn-primary" href="/student-detail/{{ $data->id }}">Detail</a>
+                                @endif
                                 @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 2)
-                                -
+                                
                                 @else 
-                                <a class="btn btn-primary" href="/student-detail/{{ $data->id }}">Detail</a>
-                                <a class="btn btn-primary" href="/student-edit/{{ $data->id }}">Edit</a>
+                                    <a class="btn btn-primary" href="/student-detail/{{ $data->id }}">Detail</a>
+                                    <a class="btn btn-primary" href="/student-edit/{{ $data->id }}">Edit</a>
                                 @endif
                                     
                                 @if (Auth::user()->role_id == 1)
-                                <a class="btn btn-primary" href="/student-delete/{{ $data->id }}">Delete</a>
+                                    <a class="btn btn-danger" href="/student-delete/{{ $data->id }}">Delete</a>
                                 @endif
                             </td>
                         </tr>

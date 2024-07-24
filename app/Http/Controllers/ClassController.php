@@ -61,4 +61,35 @@ class ClassController extends Controller
 
         return redirect('/classroom');
     }
+
+    public function delete($id)
+    {
+        $class = ClassRoom::findOrFail($id);
+        return view('classroom-delete', ['class' => $class]);
+    }
+
+    public function destroy($id)
+    {
+        $deleteClass = Classroom::findOrFail($id);
+        $deleteClass->delete();
+        Session::flash('status', 'success');
+        Session::flash('message', 'Class deleted successfully');
+
+        return redirect('/classroom');
+    }
+
+    public function deletedClass()
+    {
+        $deletedClass = Classroom::onlyTrashed()->get();
+        return view('classroom-deleted-list', ['class' => $deletedClass]);
+    }
+
+    public function restore($id)
+    {
+        $restoreClass = Classroom::withTrashed()->findOrFail($id);
+        $restoreClass->restore();
+        Session::flash('status', 'success');
+        Session::flash('message', 'Class restored successfully');
+        return redirect('/classroom');
+    }
 }
