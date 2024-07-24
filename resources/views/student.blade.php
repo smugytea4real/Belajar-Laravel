@@ -49,9 +49,16 @@
                             <td>{{ $data->NIS }}</td>
                             <td>{{ $data->class->name }}</td>
                             <td class="text-center">
+                                @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 2)
+                                -
+                                @else 
                                 <a class="btn btn-primary" href="/student-detail/{{ $data->id }}">Detail</a>
                                 <a class="btn btn-primary" href="/student-edit/{{ $data->id }}">Edit</a>
+                                @endif
+                                    
+                                @if (Auth::user()->role_id == 1)
                                 <a class="btn btn-primary" href="/student-delete/{{ $data->id }}">Delete</a>
+                                @endif
                             </td>
                         </tr>
                     @endforeach
