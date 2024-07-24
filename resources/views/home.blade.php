@@ -6,8 +6,7 @@
 
     <div class="container">
         <h1>Ini Halaman Home</h1>
-        <h4>Hi nama saya {{ $name }}</h4>
-        <h4>Saya seorang {{ $status }}</h3>
+        <h4>Selamat datang {{ Auth::user()->name }} Anda adalah seorang {{ Auth::user()->role->name }}</h4>
     </div>
     
 @endsection
