@@ -4,12 +4,20 @@
 
 @section('content')
 
-    <h1>Ini Halaman Extracurricular</h1>
+    <div class="mt-5 d-flex">
+    <h1>Extracurricular Page</h1>
+    </div>
 
-    <div class="my-5">
-        <a href="extracurricular-add" class="btn btn-primary">
-            Add Data
-        </a>
+    <div class="my-5 d-flex justify-content-between">
+        @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 2)
+                            
+        @else 
+            <a href="extracurricular-add" class="btn btn-primary">Add Data</a>   
+        @endif
+
+        @if (Auth::user()->role_id == 1)
+            <a href="extracurricular-deleted-list" class="btn btn-info">Show Deleted Data</a>   
+        @endif
     </div>
 
     @if (Session::has('status'))
@@ -18,12 +26,12 @@
         </div>
     @endif
 
-    <h4>Extracurricular list</h4>
+    <h4>Extracurriculars list</h4>
         <table class="table">
             <thead>
                 <tr>
                     <th>No</th>
-                    <th>Nama</th>
+                    <th>Exxtracurricular name</th>
                     <th class="text-center">Action</th>
                 </tr>
             </thead>
@@ -33,8 +41,15 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->name }}</td>
                         <td class="text-center">
+                        @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 2)
+                            <a class="btn btn-primary" href="extracurricular-detail/{{ $data->id }}">Detail</a>
+                        @else 
                             <a class="btn btn-primary" href="extracurricular-detail/{{ $data->id }}">Detail</a>
                             <a class="btn btn-primary" href="extracurricular-edit/{{ $data->id }}">Edit</a>
+                        @endif
+                        @if (Auth::user()->role_id == 1)
+                            <a class="btn btn-danger" href="extracurricular-delete/{{ $data->id }}">Delete</a>
+                        @endif
                         </td>
                     </tr>
                 @endforeach

@@ -16,11 +16,6 @@ class StudentController extends Controller
 {
     public function index(Request $request)
     {
-        // lazy loading
-        // $student = Student::all();
-        // lebih banyak request ke database
-
-        // eager loading => lebih cepat => hanya melakukan 2 kali request ke database
         $keyword = $request->keyword;
         $student = Student::with('class')
                             ->where('name', 'LIKE', "%$keyword%")

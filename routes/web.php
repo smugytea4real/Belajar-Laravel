@@ -47,12 +47,22 @@ Route::get('/extracurricular-add', ([ExtracurricularController::class, 'create']
 Route::post('/extracurricular', ([ExtracurricularController::class, 'store']))->middleware('auth');
 Route::get('/extracurricular-edit/{id}', ([ExtracurricularController::class, 'edit']))->middleware('auth');
 Route::put('/extracurricular/{id}', ([ExtracurricularController::class, 'update']))->middleware('auth');
+Route::get('/extracurricular-delete/{id}', ([ExtracurricularController::class, 'delete']))->middleware(['auth', 'must-admin']);
+Route::delete('/extracurricular-destroy/{id}', ([ExtracurricularController::class, 'destroy']))->middleware(['auth', 'must-admin']);
+Route::get('/extracurricular-deleted-list', ([ExtracurricularController::class, 'deletedExtracurricular']))->middleware(['auth', 'must-admin']);
+Route::get('/extracurricular/{id}/restore', ([ExtracurricularController::class, 'restore']))->middleware(['auth', 'must-admin']);
+
 
 Route::get('/teacher', ([TeacherController::class, 'index']))->middleware('auth');
-Route::get('/teacher-detail/{id}', ([TeacherController::class, 'show']))->middleware('auth');
-Route::get('/teacher-add', ([TeacherController::class, 'create']))->middleware('auth');
-Route::post('/teacher', ([TeacherController::class, 'store']))->middleware('auth');
-Route::get('/teacher-edit/{id}', ([TeacherController::class, 'edit']))->middleware('auth');
-Route::put('/teacher/{id}', ([TeacherController::class, 'update']))->middleware('auth');
+Route::get('/teacher-detail/{id}', ([TeacherController::class, 'show']))->middleware(['auth', 'must-admin-or-teacher']);
+Route::get('/teacher-add', ([TeacherController::class, 'create']))->middleware(['auth', 'must-admin']);
+Route::post('/teacher', ([TeacherController::class, 'store']))->middleware(['auth', 'must-admin']);
+Route::get('/teacher-edit/{id}', ([TeacherController::class, 'edit']))->middleware(['auth', 'must-admin']);
+Route::put('/teacher/{id}', ([TeacherController::class, 'update']))->middleware(['auth', 'must-admin']);
+Route::get('/teacher-delete/{id}', ([TeacherController::class, 'delete']))->middleware(['auth', 'must-admin']);
+Route::delete('/teacher-destroy/{id}', ([TeacherController::class, 'destroy']))->middleware(['auth', 'must-admin']);
+Route::get('/teacher-deleted-list', ([TeacherController::class, 'deletedTeacher']))->middleware(['auth']);
+Route::get('/teacher/{id}/restore', ([TeacherController::class, 'restore']))->middleware(['auth', 'must-admin']);
+
 
 

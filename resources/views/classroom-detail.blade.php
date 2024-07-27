@@ -3,25 +3,53 @@
 @section('title', 'Class')
 
 @section('content')
-    <h2>Anda sedang melihat data detail dari class {{ $class->name }}</h2>
+
+    <style>
+    .no-column {
+        width: 50px; /* Adjust the width as needed */
+        text-align: center; /* Center align the text */
+    }
+    </style>
 
     <div class="mt-5">
-        <h3><strong>Homeroom Teacher : </strong>
-        @if($class->homeroomTeacher && $class->homeroomTeacher->name)
-        {{ $class->homeroomTeacher->name }}
-        @else
-        empty
-        @endif
-        </h3>
+        <h2>Classroom Detail</h2>
+        <h4>{{ $class->name }}</h4>
     </div>
 
-    <div class="mt-5">
-        <h4>List Student</h4>
-        <ol>
-        @foreach ($class->students as $item)
-            <li>{{$item->name}}</li>
-        @endforeach
-        </ol>
+    <div class="mt-5 d-flex">
+        <h4><strong>Homeroom Teacher : </strong>
+            @if($class->homeroomTeacher && $class->homeroomTeacher->name)
+                {{ $class->homeroomTeacher->name }}
+            @else
+                empty
+            @endif
+        </h4>
     </div>
+
+    <div class="float-end">
+        <a href="/classroom" class="btn btn-primary">Back</a>    
+    </div>
+
+    <div class="mt-5 d-flex justify-content-center">
+        <div class="col-12">
+            <table class="table  table-bordered table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th class="no-column">No</th>
+                        <th>Student name</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        @foreach ($class->students as $item)
+                            <tr>
+                                <td class="no-column">{{ $loop->iteration }}</td>
+                                <td>{{ $item->name }}</td>
+                            </tr>
+                        @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
 
 @endsection

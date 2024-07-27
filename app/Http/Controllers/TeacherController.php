@@ -11,7 +11,7 @@ class TeacherController extends Controller
 {
     public function index()
     {
-        $teacher = Teacher::all();
+        $teacher = Teacher::with('class')->get();
         return view('teacher', ['teacherlist' => $teacher]);
     }
 
@@ -56,6 +56,37 @@ class TeacherController extends Controller
             Session::flash('message', 'Teacher name updated successfully');
         }
 
+        return redirect('/teacher');
+    }
+
+    public function delete($id)
+    {
+        $teacher = Teacher::findOrFail($id);
+        return view('teacher-delete', ['teacher' => $teacher]);
+    }
+
+    public function destroy($id)
+    {
+        $deleteTeacher = Teacher::findOrFail($id);
+        $deleteTeacher->delete();
+        Session::flash('status', 'success');
+        Session::flash('message', 'Teacher deleted successfully');
+
+        return redirect('/teacher');
+    }
+
+    public function deletedTeacher()
+    {
+        $deletedTeacher = Teacher::onlyTrashed()->get();
+        return view('teacher-deleted-list', ['teacher' => $deletedTeacher]);
+    }
+
+    public function restore($id)
+    {
+        $restoreTeacher = Teacher::withTrashed()->findOrFail($id);
+        $restoreTeacher->restore();
+        Session::flash('status', 'success');
+        Session::flash('message', 'Teacher restored successfully');
         return redirect('/teacher');
     }
 }

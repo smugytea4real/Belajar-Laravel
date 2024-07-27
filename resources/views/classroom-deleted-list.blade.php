@@ -4,7 +4,9 @@
 
 @section('content')
     
-    <h1>Ini Halaman Classroom yang sudah di delete</h1>
+    <div class="mt-5">
+    <h1>Classroom Deleted List</h1>
+    </div>
 
     <div class="my-5">
         <a href="/classroom" class="btn btn-primary">Back</a>
@@ -15,7 +17,7 @@
         <table class="table">
             <tr>
                 <th>No</th>
-                <th>Name</th>
+                <th>Classroom</th>
                 <th class="text-center">Action</th>
             </tr>
             <tbody>

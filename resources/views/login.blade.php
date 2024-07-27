@@ -25,9 +25,11 @@
                     {{ Session::get('message') }}
                 </div>
             @endif
-
-    
         <div class="login-box">
+            <div class="mb-3 text-center">
+                <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" width="100px">
+                <h1>Login</h1>
+            </div>
             <form method="POST" action="">
                 @csrf
                 <div class="mb-3">

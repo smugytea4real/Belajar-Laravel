@@ -17,7 +17,7 @@
         <form action="student" method="post" enctype="multipart/form-data">
             @csrf
             <div class="mb-3">
-                <label for="name">Name</label>
+                <label for="name">Student name</label>
                 <input type="text" class="form-control" name="name" id="name">
             </div>
 
@@ -36,7 +36,7 @@
             </div>
 
             <div class="mb-3">
-                <label for="class">Class</label>
+                <label for="class">Classroom</label>
                 <select name="class_id" id="class" class="form-control">
                     <option value="">-- Select --</option>
                     @foreach ($class as $item)
@@ -61,8 +61,9 @@
                 </div>
             </div>
 
-            <div>
+            <div class="mt-4 d-flex gap-2">
                 <button type="submit" class="btn btn-primary">Save</button>
+                <a href="/student" class="btn btn-secondary">Cancel</a>
             </div>
         </form>
    </div>

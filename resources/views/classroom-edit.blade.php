@@ -34,8 +34,9 @@
                     </select>
                 </div>
 
-            <div>
+            <div class="mt-5 d-flex gap-4">
                 <button type="submit" class="btn btn-primary">Update</button>
+                <a href="/classroom" class="btn btn-secondary">Cancel</a>
             </div>
         </form>
    </div>

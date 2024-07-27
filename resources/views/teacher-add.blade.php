@@ -8,12 +8,13 @@
         <form action="teacher" method="post">
             @csrf
             <div class="mb-3">
-                <label for="name">Name</label>
+                <label for="name">Teacher name</label>
                 <input type="text" class="form-control" name="name" id="name" required>
             </div>
 
-            <div>
+            <div class="mt-4 d-flex gap-2" >
                 <button type="submit" class="btn btn-primary">Save</button>
+                <a href="/teacher" class="btn btn-secondary">Cancel</a>
             </div>
         </form>
    </div>

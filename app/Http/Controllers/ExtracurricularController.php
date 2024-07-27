@@ -57,4 +57,37 @@ class ExtracurricularController extends Controller
 
         return redirect('/extracurricular');
     }
+
+    public function delete($id)
+    {
+        $eksul = Extracurricular::findOrFail($id);
+        return view('extracurricular-delete', ['eksul' => $eksul]);
+    }
+
+    public function destroy($id)
+    {
+        $deleteEksul = Extracurricular::findOrFail($id);
+        $deleteEksul->delete();
+        Session::flash('status', 'success');
+        Session::flash('message', 'Extracurricular deleted successfully');
+
+        return redirect('/extracurricular');
+    }
+
+    public function deletedExtracurricular()
+    {
+        $deletedEksul = Extracurricular::onlyTrashed()->get();
+        return view('extracurricular-deleted-list', ['eksul' => $deletedEksul]);
+    }
+
+    public function restore($id)
+    {
+        $restoreEksul = Extracurricular::withTrashed()->findOrFail($id);
+        $restoreEksul->restore();
+        Session::flash('status', 'success');
+        Session::flash('message', 'Extracurricular restored successfully');
+        return redirect('/extracurricular');
+    }
+
 }
+

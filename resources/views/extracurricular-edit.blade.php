@@ -9,12 +9,13 @@
             @csrf
             @method('PUT')
             <div class="mb-3">
-                <label for="name">Class Name</label>
+                <label for="name">Extracurricular Name</label>
                 <input type="text" class="form-control" name="name" id="name" value="{{ $extracurricular->name }}" required>
             </div>
 
-            <div>
+            <div class="mt-5 d-flex gap-4">
                 <button type="submit" class="btn btn-primary">Update</button>
+                <a href="/extracurricular" class="btn btn-secondary">Cancel</a>
             </div>
         </form>
    </div>

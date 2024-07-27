@@ -23,10 +23,10 @@
                     <a class="nav-link" href="/student">Student</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/classroom">ClassRoom</a>
+                    <a class="nav-link" href="/extracurricular">Extracurricular</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="/extracurricular">Extracurricular</a>
+                    <a class="nav-link" href="/classroom">ClassRoom</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/teacher">Teacher</a>

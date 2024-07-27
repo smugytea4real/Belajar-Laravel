@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="mt-5 d-flex">
-        <h1>Ini Halaman Classroom</h1>
+        <h1>Classroom Page</h1>
     </div>
 
     <div class="my-5 d-flex justify-content-between">        
@@ -27,7 +27,7 @@
         <table class="table">
             <tr>
                 <th>No</th>
-                <th>Name</th>
+                <th>Class room</th>
                 <th class="text-center">Action</th>
             </tr>
             @foreach($classlist as $data)

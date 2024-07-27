@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StudentEditRequest extends FormRequest
@@ -21,8 +22,15 @@ class StudentEditRequest extends FormRequest
      */
     public function rules()
     {
+        $studentId = $this->route('id');
         return [
-            'NIS' => 'required|unique:students|max:8',
+            'NIS' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('students')->ignore($studentId), // Exclude current record from uniqueness check
+            ],
+
             'name' => 'required|min:3|max:50',
             'class_id' => 'required',
             'gender' => 'required',

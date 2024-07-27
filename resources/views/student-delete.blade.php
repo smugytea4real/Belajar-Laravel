@@ -9,12 +9,13 @@
         <form style="display: inline-block" action="/student-destroy/{{ $student->id }}" method="post">
             @csrf
             @method('delete')
-            <button type="submit" class="btn btn-danger">Delete</button>
+            <div class="d-flex gap-4">
+                <button type="submit" class="btn btn-danger ">Delete</button>
+                <a href="/student" class="btn btn-primary">Cancel</a>
+            </div>
         </form>
-
-        <a href="/student" class="btn btn-primary">Cancel</a>
     </div>
-
+    
 @endsection
 
     

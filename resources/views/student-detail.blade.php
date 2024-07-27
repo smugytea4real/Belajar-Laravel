@@ -4,7 +4,9 @@
 
 @section('content')
     
-    <h2>Anda sedang melihat detail data dari siswa "{{ $student->name }}"</h2>
+    <div class="mt-5">
+    <h2>Student Detail</h2>
+    </div>
 
     <div class="my-3 d-flex justify-content-center">
         @if ($student->image != '') 
@@ -17,30 +19,32 @@
     <div class="mt-5 mb-5">
         <table class="table table-bordered">
             <tr>
+                <th class="col-2">Name</th>
+                <th class="col-2">Gender</th>
                 @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 2)
                             
                 @else 
-                <th>NIS</th>
+                    <th class="col-2">NIS</th>
                 @endif
-                <th>Gender</th>
-                <th>Class</th>
-                <th>Homeroom Teacher</th>
+                <th class="col-2">Classroom</th>
+                <th class="col-2">Teacher</th>
             </tr>
             <tr>
-                @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 2)
-                            
-                @else 
-                <td>{{ $student->NIS }}</td>
-                @endif
-                <td>
+                <td class="col-2">{{ $student->name }}</td>
+                <td class="col-2">
                     @if($student->gender == 'L')
                         Laki-laki
                     @else
                         Perempuan
                     @endif
                 </td>
-                <td>{{ $student->class->name }}</td>
-                <td>{{ $student->class->homeroomTeacher->name }}</td>
+                    @if (Auth::user()->role_id != 1 && Auth::user()->role_id != 2)
+                                
+                    @else 
+                        <td class="col-2">{{ $student->NIS }}</td>
+                    @endif
+                <td class="col-2">{{ $student->class->name }}</td>
+                <td class="col-2">{{ $student->class->homeroomTeacher->name }}</td>
             </tr>
         </table>
     </div>
@@ -54,12 +58,7 @@
         </ol>
     </div>
     
-    <style>
-        th{
-           width: 25%; 
-        }
-    </style>
-
+    <a href="/student" class="btn btn-primary">Back</a>
 @endsection
 
     
